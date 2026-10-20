@@ -1,0 +1,107 @@
+/* =========================================================================
+   Design tokens — extracted with SkillUI (ultra) + live DOM inspection.
+   OWNER: lead (do not edit from page agents; add page-local vars in your own CSS)
+   ========================================================================= */
+:root {
+  /* ---- Brand colors ---- */
+  --brand-navy: #1F2B5E;
+  --navy: var(--brand-navy);
+  --muted: #626C95;
+  --white: #FFFFFF;
+  --overlay-bg: #DEDFE4;          /* selection overlay / home logo transition bg */
+  --menu-dim: rgba(31, 43, 94, .35);
+
+  /* ---- Category palettes ---- */
+  --category-color-light: var(--white);
+  --category-by-the-sea-color: #222A4C;
+  --category-by-the-sea-muted: #5D668D;
+  --category-evergreen-color: #36614D;
+  --category-evergreen-muted: #80988E;
+  --category-urban-living-color: #2D1C2D;
+  --category-urban-living-muted: #6B5A6B;
+  --category-rare-gems-color: #1C181D;
+  --category-rare-gems-muted: #5C585D;
+
+  /* defaults (overridden per category body class below) */
+  --category-color: var(--navy);
+  --category-color-muted: var(--muted);
+  --custom-scrollbar-thumb-color: var(--muted);
+
+  /* ---- Fonts (open-license substitutes for the original licensed faces) ----
+     Google Sans        -> Figtree
+     Roslindale Display -> Fraunces 300
+     Monument Extended  -> Unbounded                                         */
+  --sans-font: "Figtree", Arial, Helvetica, sans-serif;
+  --display-font: "Fraunces", Georgia, "Times New Roman", serif;
+  --wide-font: "Unbounded", "Arial Black", sans-serif;
+
+  /* ---- Motion ---- */
+  --standard-easing: cubic-bezier(.7, .6, 0, 1);
+  --cta-motion-easing: cubic-bezier(.7, .6, 0, 1);
+  --selection-hover-easing: cubic-bezier(.7, .6, 0, 1);
+  --overlay-duration: .8s;
+  --selection-hover-duration: .8s;
+  --gsap-ease: "expo.out";        /* reference only — use in JS */
+
+  /* ---- Responsive scale ---- */
+  --desktop-size-scale: 1;
+  --tablet-size-scale: 1.54;
+  --mobile-size-scale: 2.25;
+  --layout-size-scale: var(--desktop-size-scale);
+
+  /* ---- Grid ---- */
+  --grid-columns: 12;
+  --grid-padding: 4.5vw;
+  --grid-gap: 2.601vw;
+
+  /* ---- Type scale (desktop, vw-based like the original) ---- */
+  --body-leading: 1.35;
+  --h1-size: 16vw;      --h1-lh: 1;    --h1-ls: -.02em;   /* marquee giant text */
+  --h2-size: 5.2vw;     --h2-lh: .94;  --h2-ls: -.03em;
+  --h3-size: 3.646vw;   --h3-lh: .92;  --h3-ls: -.05em;
+  --h4-size: 1.5vw;     --h4-lh: 1.3;  --h4-ls: -.01em;
+  --h5-size: 1.736vw;   --h5-lh: var(--body-leading); --h5-ls: -.01em;
+  --h6-size: 1.447vw;   --h6-lh: 1.4;  --h6-ls: -.01em;
+  --text-size: 1.2vw;   --p-lh: var(--body-leading); --p-ls: -.01em;
+  --nav-size: 1.2vw;
+  --tag-size: .9vw;
+
+  /* ---- Component sizes ---- */
+  --logo-width: 20vw;
+  --hero-visual-size: 20vw;
+  --hero-content-width: 42vw;
+  --home-hero-content-max-width: 35vw;
+  --menu-btn-size: 3.5vw;
+  --underline-offset: -.3em;
+}
+
+/* Category body classes — set on <body> of each category page */
+body.category-by-the-sea   { --category-color: var(--category-by-the-sea-color);   --category-color-muted: var(--category-by-the-sea-muted);   --custom-scrollbar-thumb-color: var(--category-by-the-sea-muted); }
+body.category-evergreen    { --category-color: var(--category-evergreen-color);    --category-color-muted: var(--category-evergreen-muted);    --custom-scrollbar-thumb-color: var(--category-evergreen-muted); }
+body.category-urban-living { --category-color: var(--category-urban-living-color); --category-color-muted: var(--category-urban-living-muted); --custom-scrollbar-thumb-color: var(--category-urban-living-muted); }
+body.category-rare-gems    { --category-color: var(--category-rare-gems-color);    --category-color-muted: var(--category-rare-gems-muted);    --custom-scrollbar-thumb-color: var(--category-rare-gems-muted); }
+
+/* Tablet / mobile: the original multiplies vw sizes by a scale factor */
+@media (max-width: 1024px) {
+  :root {
+    --layout-size-scale: var(--tablet-size-scale);
+    --h2-size: calc(5.2vw * 1.54);  --h3-size: calc(3.646vw * 1.54);
+    --h4-size: calc(1.5vw * 1.54);  --h5-size: calc(1.736vw * 1.54);
+    --h6-size: calc(1.447vw * 1.54); --text-size: calc(1.2vw * 1.54);
+    --nav-size: calc(1.2vw * 1.54); --tag-size: calc(.9vw * 1.54);
+    --logo-width: 28vw; --hero-visual-size: 30vw; --menu-btn-size: 6vw;
+    --hero-content-width: 70vw; --home-hero-content-max-width: 60vw;
+  }
+}
+@media (max-width: 640px) {
+  :root {
+    --layout-size-scale: var(--mobile-size-scale);
+    --grid-padding: 5vw; --grid-gap: 4vw;
+    --h1-size: 28vw;
+    --h2-size: 11vw;  --h3-size: 8.2vw;
+    --h4-size: 4.6vw; --h5-size: 4.6vw; --h6-size: 4vw;
+    --text-size: 4vw; --nav-size: 4vw; --tag-size: 3vw;
+    --logo-width: 44vw; --hero-visual-size: 52vw; --menu-btn-size: 12vw;
+    --hero-content-width: 90vw; --home-hero-content-max-width: 90vw;
+  }
+}

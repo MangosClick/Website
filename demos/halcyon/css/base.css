@@ -1,0 +1,85 @@
+/* =========================================================================
+   Base: reset, typography, grid, shared utilities.
+   OWNER: lead (page agents: do not edit — override in your own stylesheet)
+   ========================================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+  background: var(--white);
+  color: var(--navy);
+  font-family: var(--sans-font);
+  font-size: var(--text-size);
+  line-height: var(--p-lh);
+  letter-spacing: var(--p-ls);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img, video { display: block; max-width: 100%; }
+img { object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; }
+ul, ol { list-style: none; }
+
+/* ---- Typography ---- */
+h1, .h1 { font-size: var(--h1-size); line-height: var(--h1-lh); letter-spacing: var(--h1-ls); font-weight: 500; }
+h2, .h2 { font-size: var(--h2-size); line-height: var(--h2-lh); letter-spacing: var(--h2-ls); font-weight: 400; }
+h3, .h3 { font-size: var(--h3-size); line-height: var(--h3-lh); letter-spacing: var(--h3-ls); font-weight: 400; }
+h4, .h4 { font-size: var(--h4-size); line-height: var(--h4-lh); letter-spacing: var(--h4-ls); font-weight: 400; }
+h5, .h5 { font-size: var(--h5-size); line-height: var(--h5-lh); letter-spacing: var(--h5-ls); font-weight: 400; }
+h6, .h6 { font-size: var(--h6-size); line-height: var(--h6-lh); letter-spacing: var(--h6-ls); font-weight: 400; }
+p { font-size: var(--text-size); line-height: var(--p-lh); }
+.display { font-family: var(--display-font); font-weight: 300; letter-spacing: -.02em; }
+.wide { font-family: var(--wide-font); text-transform: uppercase; letter-spacing: .08em; }
+.muted { color: var(--muted); }
+
+/* Outlined "tag" pill — e.g. STARTING FROM 100,000€ */
+.tag {
+  display: inline-block;
+  font-family: var(--wide-font);
+  font-size: var(--tag-size);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  line-height: 1;
+  padding: .55em .9em;
+  border: 1px solid currentColor;
+}
+
+/* ---- 12-col page grid (padding 4.5vw / gap 2.601vw) ---- */
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  padding-inline: var(--grid-padding);
+}
+
+/* Underline-on-hover link (About / Contact) */
+.link-underline { position: relative; display: inline-block; }
+.link-underline::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -.08em; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: right;
+  transition: transform .65s var(--standard-easing);
+}
+.link-underline:hover::after, .link-underline.is-current::after { transform: scaleX(1); transform-origin: left; }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* Split-line reveal hooks (animated by js/core.js) */
+[data-split] .split-line { display: block; overflow: hidden; }
+[data-split] .split-line__inner { display: block; will-change: transform; }
+
+/* Parallax hook (animated by js/core.js) */
+[data-parallax] { overflow: hidden; }
+[data-parallax] > img { width: 100%; height: 120%; will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

@@ -1,0 +1,197 @@
+/* =========================================================================
+   Home page: single-viewport hero (nav / hero / footer), image over a giant
+   marquee, two-line lead + price tag. Intro choreography lives in js/home.js.
+   OWNER: home
+   ========================================================================= */
+.page-home {
+  /* page-local sizes (measured against the reference at 1440 / 768 / 390) */
+  --home-marquee-size: var(--h1-size);
+  --home-marquee-pad-bottom: 2vw;          /* lifts the text so the image sits on its x-height band */
+  --home-hero-top-shift: -18svh;           /* hero-top sits above the vertical center */
+  --home-content-bottom: calc(1.667vw + var(--grid-gap)); /* lead + tag: clear of the footer row */
+  --home-lead-size: var(--h5-size);
+}
+
+/* Desktop: no page scroll */
+@media (min-width: 1025px) {
+  html:has(body.page-home), body.page-home { overflow: hidden; height: 100%; }
+}
+
+.page-home main { position: relative; }
+
+.page-home .page-grid {
+  height: 100vh;
+  height: 100svh;
+  min-height: 0;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  padding-block: var(--grid-padding);
+  overflow: hidden;
+}
+.page-home .page-grid > .site-nav   { grid-column: 1 / -1; grid-row: 1; }
+.page-home .page-grid > .site-footer { grid-column: 1 / -1; grid-row: 3; }
+
+/* ---- Hero section ----
+   Spans every grid row so its center is the viewport center whatever height the
+   shell gives the nav/footer rows. Clicks pass through to the nav and footer. */
+.hero-section {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  position: relative;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+.hero-visual, .hero-content { pointer-events: auto; }
+
+.hero-top {
+  position: relative;
+  width: 100%;
+  margin-top: var(--home-hero-top-shift);
+  display: grid;
+  grid-template-areas: "stack";
+  align-items: center;
+}
+.hero-top > * { grid-area: stack; }
+
+/* Square image, centered above the marquee */
+.hero-visual {
+  position: relative;
+  z-index: 5;
+  justify-self: center;
+  width: var(--hero-visual-size);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--overlay-bg);
+}
+.hero-visual__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  color: transparent;            /* hide alt text while the image is loading/missing */
+  transform-origin: 50% 50%;
+  transition: transform 1.2s var(--standard-easing);
+}
+.hero-visual:hover .hero-visual__img { transform: scale(1.06); }
+.page-home:not(.intro-done) .hero-visual__img { transition: none; }
+
+/* Giant marquee, full bleed behind the image */
+.marquee {
+  position: relative;
+  z-index: 0;
+  width: calc(100% + 2 * var(--grid-padding));
+  margin-inline: calc(-1 * var(--grid-padding));
+  padding-bottom: var(--home-marquee-pad-bottom);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+}
+.marquee__track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  will-change: transform;
+}
+.marquee__item {
+  display: block;
+  flex: none;
+  font-family: var(--sans-font);
+  font-size: var(--home-marquee-size);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--h1-ls);
+  white-space: nowrap;
+  padding-right: .1625em;
+  color: var(--navy);
+}
+
+/* ---- Lead + tag ---- */
+.hero-bottom { position: static; }
+.hero-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--home-content-bottom);
+  z-index: 1;
+  margin-inline: auto;
+  max-width: var(--home-hero-content-max-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hero-lead {
+  font-size: var(--home-lead-size);
+  line-height: 1.3;
+  letter-spacing: var(--h5-ls);
+  font-weight: 500;
+  color: var(--navy);
+}
+.hero-lead__line { display: block; overflow: hidden; padding-bottom: .06em; margin-bottom: -.06em; }
+.hero-lead__inner { display: block; will-change: transform; }
+@media (min-width: 641px) {
+  .hero-content { max-width: none; }
+  .hero-lead__inner { white-space: nowrap; }
+}
+
+.hero-tag {
+  margin-top: 2em;
+  padding: .5em 1em .4em;
+  letter-spacing: .08em;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+/* ---- Intro pre-states (removed by home.js once GSAP owns them) ---- */
+.home-intro-pending .hero-visual { clip-path: inset(50% 50% 50% 50%); }
+.home-intro-pending .marquee,
+.home-intro-pending .hero-lead__inner,
+.home-intro-pending .hero-tag { visibility: hidden; }
+
+/* The shell's "Our Selection" button arrives last, after the intro
+   (shell.js injects .site-nav__actions > .selection-btn; transitions below repeat the
+   shell's own color/border ones so hover behavior is unchanged) */
+.home-intro-pending .page-home .selection-btn,
+.page-home.intro-running .selection-btn {
+  opacity: 0;
+  transform: scale(.9);
+  pointer-events: none;
+}
+.page-home .selection-btn { transform-origin: 100% 50%; }
+.page-home.intro-done .selection-btn {
+  transition: color .75s var(--standard-easing), border-color .4s, visibility .4s,
+              opacity .9s var(--standard-easing), transform .9s var(--standard-easing);
+}
+
+/* ---- Tablet ---- */
+@media (max-width: 1024px) {
+  .page-home {
+    --home-marquee-size: calc(16vw * 1.54);
+    --home-content-bottom: 13svh;
+  }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 640px) {
+  .page-home {
+    --home-marquee-size: 36vw;
+    --home-marquee-pad-bottom: 5vw;
+    --home-hero-top-shift: -34svh;
+    --home-content-bottom: 15svh;            /* leaves room for the shell's bottom buttons */
+  }
+  .page-home .page-grid { min-height: 560px; }
+}
+
+/* Short landscape screens: allow scrolling rather than overlapping */
+@media (max-height: 560px) and (min-width: 641px) {
+  html:has(body.page-home), body.page-home { overflow: auto; height: auto; }
+  .page-home .page-grid { height: auto; min-height: 560px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual__img { transition: none; }
+}

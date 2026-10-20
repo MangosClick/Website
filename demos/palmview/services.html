@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dental Services | Palmview Dentistry</title>
+  <link rel="icon" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&family=DM+Sans:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="services">
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <img src="assets/img/page-hero.jpg" alt="">
+    <div class="diamonds" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="hero-text"><small>Palmview Dentistry</small><h1>Dental Services</h1></div>
+  </section>
+
+  <section class="section" style="padding-top:60px">
+    <div class="wrap cards" id="service-cards"></div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap contact-split">
+      <div class="reveal">
+        <span class="eyebrow eyebrow--sm">Get in Touch with Us</span>
+        <h2 class="section-title">Experienced Dental Care</h2>
+        <div class="contact-photos"><img src="assets/img/office-room.jpg" alt="Treatment room"><img src="assets/img/palms-small.jpg" alt="Palm trees"></div>
+        <p>From a six-month cleaning to a complete smile makeover, the Palmview team will help you build a healthy, confident smile and keep it for years to come.</p>
+        <ul class="checklist checklist--single"><li>SANTA MONICA OFFICE</li></ul>
+      </div>
+      <form class="form reveal reveal-d1">
+        <input placeholder="First" aria-label="First name" required>
+        <input placeholder="Last" aria-label="Last name">
+        <input class="full" type="tel" placeholder="Phone" aria-label="Phone" required>
+        <input class="full" type="email" placeholder="Email" aria-label="Email" required>
+        <textarea class="full" placeholder="How may we help you?" aria-label="Message"></textarea>
+        <button class="btn btn--sm" type="submit">Submit</button>
+        <p class="form-note" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <script>
+    // Six service cards, rendered before main.js so they get the scroll reveal.
+    const SERVICES = [
+      ['General Dentistry', 'Checkups, cleanings and fillings that keep your teeth and gums healthy year after year.'],
+      ['Cosmetic Dentistry', 'Whitening, veneers and bonding to brighten your smile and boost your confidence.'],
+      ['Restorative Dentistry', 'Crowns, bridges and implants that bring back strength, comfort and a natural look.'],
+      ['Sedation Dentistry', 'Nervous about the dentist? Gentle sedation helps you relax through every step.'],
+      ['Pediatric Dentistry', 'Friendly, patient care that helps kids build healthy habits from their very first tooth.'],
+      ['Dental Technology', 'Digital X-rays, intraoral cameras and 3D scans for faster, more comfortable visits.'],
+    ];
+    const toothSvg = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8c-5 0-7 4-7 9 0 4 2 7 3 11 1 5 2 12 5 12s3-5 4-9c.5-2 2-3 4-3s3.5 1 4 3c1 4 1 9 4 9s4-7 5-12c1-4 3-7 3-11 0-5-2-9-7-9-3 0-5 2-9 2s-6-2-9-2Z"/><path d="M6 30l1.5 3L10 34l-2.5 1L6 38l-1.5-3L2 34l2.5-1Z"/></svg>';
+    document.getElementById('service-cards').innerHTML = SERVICES.map(([t, d], i) =>
+      `<a class="card reveal reveal-d${i % 4}" href="contact.html#form"><div class="ico">${toothSvg}</div><h3>${t}</h3><p>${d}</p><span class="arrow">→</span></a>`).join('');
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

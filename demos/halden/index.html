@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halden Automotive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cover" aria-hidden="true"></div>
+  <noscript><style>.cover { display: none; }</style></noscript>
+
+  <!-- Intro loader -->
+  <div class="intro" aria-hidden="true">
+    <div class="grid intro__labels">
+      <span class="label span-3">Halden</span>
+      <span class="label col-4">Automotive studio</span>
+    </div>
+    <div class="intro__mark wordmark"><span>H</span><span>A</span><span>L</span><span>D</span><span>E</span><span>N</span></div>
+  </div>
+
+  <header class="site-header grid">
+    <a class="label span-3" href="index.html">Halden</a>
+    <p class="label col-4">Automotive studio<br>Since 1994</p>
+    <nav class="nav-list col-9" aria-label="Main">
+      <a class="label" href="services.html">Services</a>
+      <a class="label" href="partners.html">Partners</a>
+      <a class="label" href="about.html">About</a>
+      <a class="label" href="contact.html">Contact</a>
+      <a class="label" href="careers.html">Careers</a>
+    </nav>
+  </header>
+
+  <div class="fixed-ctrl">
+    <a class="pill label" href="contact.html">Contact</a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </div>
+
+  <div class="menu" id="menu" aria-hidden="true" inert>
+    <ul class="menu__links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="partners.html">Partners</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="careers.html">Careers</a></li>
+    </ul>
+    <div class="menu__foot grid">
+      <p class="label span-3">@halden</p>
+      <p class="label col-9">(00) 0000 0000<br>hello@example.com</p>
+    </div>
+  </div>
+
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__thumb"></div>
+    <span class="cursor__tag label">Next</span>
+  </div>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero__media">
+        <div class="streaks streaks--far"></div>
+        <div class="streaks"></div>
+      </div>
+      <div class="hero__content grid">
+        <h1 class="hero__title">Back to factory<br>condition</h1>
+        <p class="hero__blurb label col-9">Collision repair, paintwork and care for performance cars, run by people who drive them.</p>
+      </div>
+      <div class="hero__foot grid">
+        <button class="label span-3 unmute" type="button">Unmute</button>
+        <a class="label col-9" href="about.html">Our story</a>
+      </div>
+    </section>
+
+    <section class="statement" id="about">
+      <p class="label">Manufacturer approved</p>
+      <p class="large-body reveal-lines">Every repair follows the maker's own procedures, from the measuring jig to the paint mix. Our technicians train with the brands we work on, and each car leaves the workshop the way it left the factory.</p>
+    </section>
+
+    <section class="slider" tabindex="0" role="button" aria-label="Show next image">
+      <div class="slide is-active" style="--bg: url('assets/img/cars/slide-workshop.jpg') center / cover no-repeat">
+        <span class="slide__caption label">Workshop</span>
+      </div>
+      <div class="slide" style="--bg: url('assets/img/cars/slide-paint.jpg') center / cover no-repeat">
+        <span class="slide__caption label">Paint booth</span>
+      </div>
+      <div class="slide" style="--bg: url('assets/img/cars/slide-detailing.jpg') center / cover no-repeat">
+        <span class="slide__caption label">Detailing bay</span>
+      </div>
+      <div class="slide" style="--bg: url('assets/img/cars/slide-handover.jpg') center / cover no-repeat">
+        <span class="slide__caption label">Handover</span>
+      </div>
+    </section>
+
+    <section class="marques" id="marques">
+      <div class="grid marques__head">
+        <p class="label span-3">Marques</p>
+        <p class="label col-9">We work on a short list of makers, and we know each one well.</p>
+      </div>
+      <div class="grid marques__body">
+        <ul class="marques__list">
+          <li>Porsche</li>
+          <li>Ferrari</li>
+          <li>Lamborghini</li>
+          <li>McLaren</li>
+          <li>Aston Martin</li>
+          <li>Bentley</li>
+          <li>Rolls-Royce</li>
+          <li>Mercedes-AMG</li>
+          <li>BMW M</li>
+          <li>Audi RS</li>
+        </ul>
+        <div class="marques__col col-9">
+          <div class="marques__media">
+            <div class="marques__frame" style="background: url('assets/img/cars/marque-porsche.jpg') center / cover"></div>
+            <div class="marques__frame" style="background: url('assets/img/cars/marque-ferrari.jpg') center / cover"></div>
+            <div class="marques__frame" style="background: url('assets/img/cars/marque-lamborghini.jpg') center / cover"></div>
+            <div class="marques__frame" style="background: url('assets/img/cars/marque-mclaren.jpg') center / cover"></div>
+            <div class="marques__frame" style="background: url('assets/img/cars/marque-aston-martin.jpg') center / cover"></div>
+            <div class="marques__frame" style="background: url('assets/img/cars/marque-bentley.jpg') center / cover"></div>
+            <div class="marques__frame" style="background: url('assets/img/cars/marque-rolls-royce.jpg') center / cover"></div>
+            <div class="marques__frame" style="background: url('assets/img/cars/marque-mercedes-amg.jpg') center / cover"></div>
+            <div class="marques__frame" style="background: url('assets/img/cars/marque-bmw-m.jpg') center / cover"></div>
+            <div class="marques__frame" style="background: url('assets/img/cars/marque-audi-rs.jpg') center / cover"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <p class="label">Tailored solutions</p>
+      <p class="large-body reveal-lines">From a scuffed bumper to a full structural rebuild, one team handles the job from start to finish: assessment, insurer paperwork, repair, paint and a final detail before the car comes home.</p>
+      <div class="grid services__wrap">
+        <p class="label span-3">Our services</p>
+        <ol class="services__list col-9">
+          <li><span class="label">01</span><span>Collision repair</span></li>
+          <li><span class="label">02</span><span>Insurance claims</span></li>
+          <li><span class="label">03</span><span>Paint and refinishing</span></li>
+          <li><span class="label">04</span><span>Paint protection film and ceramic coating</span></li>
+          <li><span class="label">05</span><span>Pick-up and delivery</span></li>
+          <li><span class="label">06</span><span>Courtesy cars</span></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer grid" id="contact">
+    <p class="label type span-3 f-brand">Halden</p>
+    <p class="label type col-4 f-meta">Automotive studio.<br>Placeholder City.<br>© 2026 Halden.</p>
+    <div class="col-9 f-nav">
+      <nav class="nav-list" aria-label="Footer">
+        <a class="label type" href="services.html">Services</a>
+        <a class="label type" href="partners.html">Partners</a>
+        <a class="label type" href="about.html">About</a>
+        <a class="label type" href="contact.html">Contact</a>
+        <a class="label type" href="careers.html">Careers</a>
+      </nav>
+      <form class="signup" onsubmit="return false">
+        <label class="sr-only" for="email">Email</label>
+        <input class="label" id="email" type="email" placeholder="Enter your email">
+        <button class="label" type="submit">Sign up</button>
+      </form>
+    </div>
+    <div class="wordmark f-mark" aria-hidden="true">Halden</div>
+    <div class="col-9 f-contact">
+      <p class="label muted type">Contact</p>
+      <p class="label type">(00) 0000 0000<br>hello@example.com<br>8am – 5pm weekdays</p>
+      <p class="label muted type">Workshop</p>
+      <p class="label type">1 Example Street,<br>Suburb 0000</p>
+      <p class="label muted type">Studio</p>
+      <p class="label type">2 Sample Lane,<br>Suburb 0000</p>
+    </div>
+    <p class="label type span-3 f-handle">@halden</p>
+    <a class="label muted type col-4 f-privacy" href="#">Privacy</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" integrity="sha384-eD5ubmuCcvTdCADWuSchJYE7wcj2nzNr0itbrh6w/KJyBiltSZ8w3VFRBSWu5YQ8" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+</html>

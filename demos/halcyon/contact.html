@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Halcyon</title>
+  <meta name="description" content="Talk to Halcyon about homes in Cyprus, Montenegro and Georgia, or about partnering with us.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Fraunces:opsz,wght@9..144,300&family=Unbounded:wght@400;500&display=swap">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body class="contact-page" data-page="contact" data-theme="light">
+  <div id="page-stage">
+    <main>
+      <section class="contact-hero">
+        <div class="page-grid contact-hero__grid">
+          <nav class="site-nav" data-site-nav></nav>
+          <h1 class="visually-hidden">Contact Halcyon</h1>
+
+          <div class="contact-hero__marquee" aria-hidden="true">
+            <div class="contact-hero__marquee-rotate">
+              <div class="marquee marquee--contact" data-marquee data-speed="70" data-direction="1">
+                <span class="marquee__item">Contact</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-hero__channels-stack">
+            <h2 class="contact-hero__channels-heading" data-split="load">Let’s talk.</h2>
+            <ul class="contact-hero__channels">
+              <li class="contact-hero__channel" data-reveal data-reveal-delay="0.15">
+                <p class="contact-hero__channel-label">Email</p>
+                <a class="contact-hero__channel-link" href="mailto:hello@halcyon.example" data-copy="hello@halcyon.example">
+                  <span class="contact-hero__channel-copy">hello@halcyon.example</span>
+                  <span class="contact-hero__channel-feedback" aria-hidden="true">Copied to clipboard</span>
+                </a>
+              </li>
+              <li class="contact-hero__channel" data-reveal data-reveal-delay="0.25">
+                <p class="contact-hero__channel-label">WhatsApp</p>
+                <a class="contact-hero__channel-link" href="https://wa.me/0000000000" target="_blank" rel="noopener"><span class="contact-hero__channel-copy">Start a chat</span></a>
+              </li>
+              <li class="contact-hero__channel" data-reveal data-reveal-delay="0.35">
+                <p class="contact-hero__channel-label">Phone</p>
+                <a class="contact-hero__channel-link" href="tel:+00000000000"><span class="contact-hero__channel-copy">+00 000 000 000</span></a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-hero__aside">
+            <div class="contact-hero__form" data-contact-form>
+              <div class="contact-form-tabs" role="tablist" aria-label="Who is getting in touch">
+                <button type="button" class="contact-form-tabs__tab is-active" role="tab" id="tab-investors" aria-selected="true" aria-controls="panel-investors" data-tab="investors">Investors</button>
+                <button type="button" class="contact-form-tabs__tab" role="tab" id="tab-partnership" aria-selected="false" aria-controls="panel-partnership" data-tab="partnership" tabindex="-1">Partnership</button>
+                <span class="contact-form-tabs__indicator" aria-hidden="true"></span>
+              </div>
+
+              <div class="contact-form-panels">
+                <!-- Investors -->
+                <form class="contact-page-form is-active" id="panel-investors" role="tabpanel" aria-labelledby="tab-investors" data-form="investors" novalidate>
+                  <div class="field">
+                    <input class="field__input" type="text" id="inv-name" name="fullname" autocomplete="name" required placeholder=" ">
+                    <label class="field__label" for="inv-name">Full name*</label>
+                    <span class="field__line" aria-hidden="true"></span>
+                    <p class="field__error" id="inv-name-err"></p>
+                  </div>
+                  <div class="field">
+                    <input class="field__input" type="email" id="inv-email" name="email" autocomplete="email" required placeholder=" ">
+                    <label class="field__label" for="inv-email">Email*</label>
+                    <span class="field__line" aria-hidden="true"></span>
+                    <p class="field__error" id="inv-email-err"></p>
+                  </div>
+                  <div class="contact-form__row">
+                    <div class="field">
+                      <input class="field__input" type="tel" id="inv-phone" name="phone" autocomplete="tel" required placeholder=" " data-validate="phone">
+                      <label class="field__label" for="inv-phone">Phone*</label>
+                      <span class="field__line" aria-hidden="true"></span>
+                      <p class="field__error" id="inv-phone-err"></p>
+                    </div>
+                    <div class="field field--select" data-select data-required data-name="country" data-label="Country*" data-options="Cyprus|Montenegro|Georgia|Germany|United Kingdom|Israel|United Arab Emirates|Other"></div>
+                  </div>
+                  <div class="contact-form__row">
+                    <div class="field field--select" data-select data-required data-name="budget" data-label="Investment budget*" data-options="100,000€ – 250,000€|250,000€ – 500,000€|500,000€ – 1,000,000€|Above 1,000,000€"></div>
+                    <div class="field field--select" data-select data-name="goal" data-label="Purchase goal" data-options="Holiday home|Rental income|Permanent residence|Long-term investment"></div>
+                  </div>
+                  <div class="contact-form__row">
+                    <div class="field field--select" data-select data-name="destination" data-label="Preferred destination" data-options="Cyprus|Montenegro|Georgia|Open to suggestions"></div>
+                    <div class="field field--select" data-select data-name="timeline" data-label="Purchase timeline" data-options="Within 3 months|3 – 6 months|6 – 12 months|Just exploring"></div>
+                  </div>
+                  <div class="field field--textarea">
+                    <textarea class="field__input" id="inv-message" name="message" rows="2" placeholder=" "></textarea>
+                    <label class="field__label" for="inv-message">Message</label>
+                    <span class="field__line" aria-hidden="true"></span>
+                  </div>
+                  <div class="lead-form__consents">
+                    <label class="lead-form__consent">
+                      <input type="checkbox" name="consent" required>
+                      <span class="lead-form__check" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 6.4 4.8 9 10 3.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+                      <span class="lead-form__consent-text">I agree to the privacy notice and to receive occasional updates from Halcyon.*</span>
+                    </label>
+                    <p class="field__error" data-error-for="consent"></p>
+                  </div>
+                  <button type="submit" class="send-btn"><span class="send-btn__fill" aria-hidden="true"></span><span class="send-btn__label">Send</span></button>
+                </form>
+
+                <!-- Partnership -->
+                <form class="contact-page-form" id="panel-partnership" role="tabpanel" aria-labelledby="tab-partnership" data-form="partnership" novalidate hidden>
+                  <div class="field">
+                    <input class="field__input" type="text" id="par-name" name="fullname" autocomplete="name" required placeholder=" ">
+                    <label class="field__label" for="par-name">Full name*</label>
+                    <span class="field__line" aria-hidden="true"></span>
+                    <p class="field__error" id="par-name-err"></p>
+                  </div>
+                  <div class="field">
+                    <input class="field__input" type="email" id="par-email" name="email" autocomplete="email" required placeholder=" ">
+                    <label class="field__label" for="par-email">Email*</label>
+                    <span class="field__line" aria-hidden="true"></span>
+                    <p class="field__error" id="par-email-err"></p>
+                  </div>
+                  <div class="contact-form__row">
+                    <div class="field">
+                      <input class="field__input" type="tel" id="par-phone" name="phone" autocomplete="tel" required placeholder=" " data-validate="phone">
+                      <label class="field__label" for="par-phone">Phone*</label>
+                      <span class="field__line" aria-hidden="true"></span>
+                      <p class="field__error" id="par-phone-err"></p>
+                    </div>
+                    <div class="field field--select" data-select data-required data-name="country" data-label="Country*" data-options="Cyprus|Montenegro|Georgia|Germany|United Kingdom|Israel|United Arab Emirates|Other"></div>
+                  </div>
+                  <div class="contact-form__row">
+                    <div class="field">
+                      <input class="field__input" type="text" id="par-company" name="company" autocomplete="organization" required placeholder=" ">
+                      <label class="field__label" for="par-company">Company name*</label>
+                      <span class="field__line" aria-hidden="true"></span>
+                      <p class="field__error" id="par-company-err"></p>
+                    </div>
+                    <div class="field field--select" data-select data-required data-name="partnership_type" data-label="Partnership type*" data-options="Developer|Agency|Investor network|Media &amp; marketing|Other"></div>
+                  </div>
+                  <div class="field">
+                    <input class="field__input" type="text" id="par-website" name="company_website" autocomplete="url" placeholder=" " data-validate="url">
+                    <label class="field__label" for="par-website">Website</label>
+                    <span class="field__line" aria-hidden="true"></span>
+                    <p class="field__error" id="par-website-err"></p>
+                  </div>
+                  <div class="field field--textarea">
+                    <textarea class="field__input" id="par-message" name="message" rows="2" placeholder=" "></textarea>
+                    <label class="field__label" for="par-message">Message</label>
+                    <span class="field__line" aria-hidden="true"></span>
+                  </div>
+                  <div class="lead-form__consents">
+                    <label class="lead-form__consent">
+                      <input type="checkbox" name="consent" required>
+                      <span class="lead-form__check" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 6.4 4.8 9 10 3.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+                      <span class="lead-form__consent-text">I agree to the privacy notice and to receive occasional updates from Halcyon.*</span>
+                    </label>
+                    <p class="field__error" data-error-for="consent"></p>
+                  </div>
+                  <button type="submit" class="send-btn"><span class="send-btn__fill" aria-hidden="true"></span><span class="send-btn__label">Send</span></button>
+                </form>
+              </div>
+
+              <div class="contact-thanks" hidden tabindex="-1" aria-live="polite">
+                <svg class="contact-thanks__icon" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M15 27.5 22.5 34.5 37.5 18.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                <h3 class="contact-thanks__title">Thank you.</h3>
+                <p class="contact-thanks__text">Your message is with us. Someone from the team will reply within one working day.</p>
+                <button type="button" class="contact-thanks__again link-underline">Send another message</button>
+              </div>
+            </div>
+          </div>
+
+          <footer class="site-footer" data-site-footer></footer>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous"></script>
+  <script src="js/core.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

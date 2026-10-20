@@ -1,0 +1,436 @@
+/* =========================================================================
+   contact.css: Contact page. Vertical rotated marquee on the left, "Let's talk."
+   channels in the middle, tabbed form on the right. Single column <= 1024px.
+   ========================================================================= */
+body.contact-page {
+  --c-error: #8B2E2E;
+  --c-line: rgba(31, 43, 94, .2);
+  --c-input: .94vw;          /* field text */
+  --c-small: .81vw;          /* consent, errors */
+  --c-tab: 1.1vw;
+  --c-channel-label: 1.1vw;
+  --c-channel-copy: .94vw;
+  --c-heading: var(--h5-size);
+  --c-marquee: 15.16vw;
+  --c-field-gap: .42vw;
+  background: var(--white);
+}
+
+/* ---------- Layout ---------- */
+.contact-hero { position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden; }
+.contact-hero__grid {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  grid-template-rows: 1fr;
+  align-items: end;
+  padding-top: calc(var(--grid-padding) + 9vw);
+  padding-bottom: var(--grid-padding);
+  color: var(--navy);
+}
+
+/* ---------- Vertical marquee: a horizontal core.js marquee inside a rotated frame ---------- */
+.contact-hero__marquee {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 13.8vw;
+  width: calc(var(--c-marquee) * .92);
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+.contact-hero__marquee-rotate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220vh;
+  width: 220svh;            /* long enough for tall/short screens; the frame clips it */
+  transform-origin: 0 0;
+  transform: rotate(-90deg) translateX(-100%);   /* reads bottom-to-top along the left edge */
+}
+.marquee--contact .marquee__item {
+  font-family: var(--sans-font);
+  font-size: var(--c-marquee);
+  font-weight: 500;
+  line-height: .92;
+  letter-spacing: var(--h1-ls);
+  color: var(--navy);
+  padding-right: .22em;
+}
+
+/* ---------- Channels ---------- */
+.contact-hero__channels-stack { grid-column: 6 / 9; grid-row: 1; align-self: end; padding-bottom: 1.85vw; }
+.contact-hero__channels-heading {
+  font-size: var(--c-heading);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -.01em;
+  margin-bottom: 4.6vw;
+}
+.contact-hero__channels { display: flex; flex-direction: column; gap: 2.9vw; }
+.contact-hero__channel-label { font-size: var(--c-channel-label); font-weight: 500; line-height: 1.2; }
+.contact-hero__channel-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-top: .35vw;
+  font-size: var(--c-channel-copy);
+  color: var(--muted);
+  transition: color .35s;
+}
+.contact-hero__channel-copy { position: relative; }
+.contact-hero__channel-copy::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -.1em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .65s var(--standard-easing);
+}
+.contact-hero__channel-link:hover { color: var(--navy); }
+.contact-hero__channel-link:hover .contact-hero__channel-copy::after,
+.contact-hero__channel-link:focus-visible .contact-hero__channel-copy::after { transform: scaleX(1); transform-origin: left; }
+.contact-hero__channel-feedback {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  padding: .19vw .52vw;
+  background: var(--navy);
+  color: var(--white);
+  white-space: nowrap;
+  transform: translateY(-50%);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path .6s var(--standard-easing);
+  pointer-events: none;
+}
+.contact-hero__channel-link.is-copied .contact-hero__channel-feedback { clip-path: inset(0 0 0 0); }
+
+/* ---------- Form column ---------- */
+.contact-hero__aside { grid-column: 9 / 13; grid-row: 1; align-self: end; padding-bottom: 1.85vw; }
+.contact-hero__form { position: relative; }
+
+.contact-form-tabs {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgba(31, 43, 94, .1);
+}
+.contact-form-tabs__tab {
+  padding: .77vw .44vw .94vw;
+  font-size: var(--c-tab);
+  font-weight: 500;
+  color: var(--muted);
+  transition: color .45s var(--standard-easing);
+}
+.contact-form-tabs__tab:hover, .contact-form-tabs__tab.is-active { color: var(--navy); }
+.contact-form-tabs__tab:focus-visible { outline: 2px solid var(--muted); outline-offset: -2px; }
+.contact-form-tabs__indicator {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 50%;
+  height: 2px;
+  background: var(--navy);
+  transition: transform .7s var(--standard-easing);
+}
+.contact-form-tabs[data-active="partnership"] .contact-form-tabs__indicator { transform: translateX(100%); }
+
+.contact-form-panels { margin-top: 2.5vw; }
+.contact-page-form { display: flex; flex-direction: column; gap: var(--c-field-gap); }
+.contact-page-form[hidden], .contact-form-tabs[hidden], .contact-form-panels[hidden] { display: none; }
+.contact-form__row { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.04vw; align-items: start; }
+
+/* ---------- Fields: floating label + animated underline ---------- */
+.field { position: relative; min-width: 0; }
+.field__input {
+  display: block;
+  width: 100%;
+  padding: 1.35vw 0 .7vw;
+  border: 0;
+  border-bottom: 1px solid var(--c-line);
+  border-radius: 0;
+  /* animated underline: a navy line grows over the resting border on focus */
+  background: linear-gradient(var(--navy), var(--navy)) no-repeat 0 100% / 0% 1px;
+  transition: background-size .7s var(--standard-easing), border-color .3s;
+  font-size: var(--c-input);
+  line-height: 1.4;
+  color: var(--navy);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+textarea.field__input { resize: none; min-height: 4.2vw; }
+.field__label {
+  position: absolute;
+  left: 0;
+  top: 1.35vw;
+  font-size: var(--c-input);
+  line-height: 1.4;
+  color: var(--muted);
+  transform-origin: 0 0;
+  pointer-events: none;
+  transition: transform .55s var(--standard-easing), color .3s;
+}
+.field__input:focus ~ .field__label,
+input.field__input:not(:placeholder-shown) ~ .field__label,
+textarea.field__input:not(:placeholder-shown) ~ .field__label,
+.field.is-filled .field__label,
+.field.is-open .field__label { transform: translateY(-1.15vw) scale(.8); }
+.field__input:focus ~ .field__label, .field.is-open .field__label { color: var(--navy); }
+.field__line { display: none; }   /* kept in the markup; the underline is drawn on the input */
+.field__input:focus, .field.is-open .field__input { background-size: 100% 1px; }
+.select__trigger:focus-visible { background-size: 100% 1px; }
+.field__error {
+  max-height: 0;
+  overflow: hidden;
+  font-size: var(--c-small);
+  line-height: 1.3;
+  color: var(--c-error);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height .4s var(--standard-easing), opacity .3s, transform .4s var(--standard-easing), margin .4s;
+}
+.field.is-invalid .field__error,
+.lead-form__consents.is-invalid .field__error { max-height: 3em; opacity: 1; transform: none; margin-top: .3vw; }
+.field.is-invalid .field__input {
+  border-bottom-color: var(--c-error);
+  background-image: linear-gradient(var(--c-error), var(--c-error));
+}
+.field.is-invalid .field__label { color: var(--c-error); }
+
+/* ---------- Custom select ---------- */
+.select__trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5em;
+  min-height: calc(var(--c-input) * 1.4 + 2.05vw + 1px);
+  text-align: left;
+  cursor: pointer;
+}
+.select__value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.select__caret {
+  flex: none;
+  width: .55vw;
+  height: .55vw;
+  margin-right: .2vw;
+  transition: transform .5s var(--standard-easing);
+}
+.field.is-open .select__caret { transform: rotate(180deg); }
+.select__list {
+  position: absolute;
+  z-index: 6;
+  left: 0;
+  right: 0;
+  top: calc(100% - 1px);
+  max-height: 15vw;
+  overflow-y: auto;
+  padding: .35vw 0;
+  background: var(--white);
+  border: 1px solid rgba(31, 43, 94, .14);
+  box-shadow: 0 1.2vw 2.4vw rgba(31, 43, 94, .12);
+  font-size: var(--c-input);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-.4vw);
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path .5s var(--standard-easing), opacity .3s, transform .5s var(--standard-easing), visibility 0s .5s;
+  overscroll-behavior: contain;
+  outline: none;               /* focus is shown by the highlighted option */
+}
+.field.is-open .select__list {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path .5s var(--standard-easing), opacity .3s, transform .5s var(--standard-easing), visibility 0s;
+}
+.select__option {
+  padding: .5vw .8vw;
+  line-height: 1.3;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background-color .2s;
+}
+.select__option.is-active { background: rgba(31, 43, 94, .07); }
+.select__option[aria-selected="true"] { font-weight: 600; }
+
+/* ---------- Consent ---------- */
+.lead-form__consents { margin-top: 1.25vw; }
+.lead-form__consent {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: .7vw;
+  font-size: var(--c-small);
+  line-height: 1.4;
+  color: var(--muted);
+  cursor: pointer;
+}
+.lead-form__consent input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.lead-form__check {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.04vw;
+  height: 1.04vw;
+  margin-top: .05vw;
+  border: 1px solid rgba(31, 43, 94, .55);
+  color: var(--white);
+  transition: background-color .3s, border-color .3s;
+}
+.lead-form__check svg { width: 80%; height: 80%; stroke-dasharray: 14; stroke-dashoffset: 14; transition: stroke-dashoffset .45s var(--standard-easing); }
+.lead-form__consent input:checked + .lead-form__check { background: var(--navy); border-color: var(--navy); }
+.lead-form__consent input:checked + .lead-form__check svg { stroke-dashoffset: 0; }
+.lead-form__consent input:focus-visible + .lead-form__check { outline: 2px solid var(--muted); outline-offset: 2px; }
+.lead-form__consents.is-invalid .lead-form__check { border-color: var(--c-error); }
+
+/* ---------- Send button: navy with a fill-wipe hover ---------- */
+.send-btn {
+  position: relative;
+  align-self: flex-start;
+  overflow: hidden;
+  margin-top: 1.25vw;
+  padding: .8vw 1.5vw;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: var(--white);
+  font-size: var(--c-input);
+  font-weight: 500;
+  line-height: 1.4;
+  transition: color .6s var(--standard-easing);
+}
+.send-btn__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--white);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path var(--overlay-duration) var(--cta-motion-easing);
+}
+.send-btn__label { position: relative; }
+.send-btn:hover, .send-btn:focus-visible { color: var(--navy); }
+.send-btn:hover .send-btn__fill, .send-btn:focus-visible .send-btn__fill { clip-path: inset(0 0 0 0); }
+.send-btn:focus-visible { outline: 2px solid var(--muted); outline-offset: 3px; }
+.send-btn.is-busy { pointer-events: none; }
+
+/* ---------- Thank-you state ---------- */
+.contact-thanks { padding: 3vw 0 1vw; outline: none; }
+.contact-thanks[hidden] { display: none; }
+.contact-thanks__icon { width: 3.6vw; height: 3.6vw; color: var(--navy); }
+.contact-thanks__icon circle { stroke-dasharray: 151; stroke-dashoffset: 151; }
+.contact-thanks__icon path { stroke-dasharray: 36; stroke-dashoffset: 36; }
+.contact-thanks.is-visible .contact-thanks__icon circle { stroke-dashoffset: 0; transition: stroke-dashoffset 1.1s var(--standard-easing) .1s; }
+.contact-thanks.is-visible .contact-thanks__icon path { stroke-dashoffset: 0; transition: stroke-dashoffset .7s var(--standard-easing) .7s; }
+.contact-thanks__title {
+  margin-top: 2vw;
+  font-family: var(--display-font);
+  font-weight: 300;
+  font-size: var(--h3-size);
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+.contact-thanks__text { margin-top: 1.2vw; max-width: 24vw; color: var(--muted); font-size: var(--c-input); line-height: 1.5; }
+.contact-thanks__again { margin-top: 2.2vw; font-size: var(--c-input); font-weight: 500; color: var(--navy); }
+.contact-thanks__again::after { transform: scaleX(1); transform-origin: left; }
+.contact-thanks__again:hover::after { transform: scaleX(0); transform-origin: right; }
+
+/* ---------- Tablet & mobile: single column ---------- */
+@media (max-width: 1024px) {
+  body.contact-page {
+    --c-input: max(14px, 1.9vw);
+    --c-small: max(12px, 1.6vw);
+    --c-tab: max(15px, 2.1vw);
+    --c-channel-label: max(15px, 2.1vw);
+    --c-channel-copy: max(14px, 1.9vw);
+    --c-marquee: 24vw;
+    --c-field-gap: 1vw;
+  }
+  .contact-hero__grid {
+    grid-template-rows: auto;
+    align-items: start;
+    padding-top: calc(var(--grid-padding) + 12vw);
+  }
+  .contact-hero__marquee {
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    left: auto;
+    width: auto;
+    margin-inline: calc(-1 * var(--grid-padding));
+  }
+  .contact-hero__marquee-rotate { position: static; width: auto; transform: none; }
+  .contact-hero__channels-stack { grid-column: 1 / -1; grid-row: 2; margin-top: 8vw; padding-bottom: 0; }
+  .contact-hero__channels-heading { margin-bottom: 5vw; }
+  .contact-hero__channels { flex-direction: row; flex-wrap: wrap; gap: 4vw 8vw; }
+  .contact-hero__channel-link { margin-top: .8vw; }
+  .contact-hero__aside { grid-column: 1 / -1; grid-row: 3; margin-top: 10vw; padding-bottom: 0; }
+  .contact-form-tabs__tab { padding: 1.6vw .8vw 1.9vw; }
+  .contact-form-panels { margin-top: 4vw; }
+  .contact-form__row { column-gap: 3vw; }
+  .field__input { padding: 3vw 0 1.4vw; }
+  .field__label { top: 3vw; }
+  .field__input:focus ~ .field__label,
+  input.field__input:not(:placeholder-shown) ~ .field__label,
+textarea.field__input:not(:placeholder-shown) ~ .field__label,
+  .field.is-filled .field__label,
+  .field.is-open .field__label { transform: translateY(-2.5vw) scale(.8); }
+  .select__trigger { min-height: calc(var(--c-input) * 1.4 + 4.4vw + 1px); }
+  .select__caret { width: 1.2vw; height: 1.2vw; }
+  .select__list { max-height: 40vw; padding: 1vw 0; }
+  .select__option { padding: 1.4vw 2vw; }
+  textarea.field__input { min-height: 12vw; }
+  .lead-form__consents { margin-top: 3vw; }
+  .lead-form__consent { gap: 1.6vw; }
+  .lead-form__check { width: max(16px, 2.2vw); height: max(16px, 2.2vw); }
+  .send-btn { margin-top: 3vw; padding: 1.8vw 3.6vw; }
+  .contact-thanks__icon { width: 8vw; height: 8vw; }
+  .contact-thanks__text { max-width: 60vw; margin-top: 2.5vw; }
+  .contact-thanks__again { margin-top: 4vw; }
+  .contact-page .site-footer {
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 4;
+    transform: none;
+    margin-top: 12vw;
+    margin-bottom: calc(var(--menu-btn-size) + 2vw);
+  }
+}
+@media (max-width: 640px) {
+  body.contact-page {
+    --c-input: 16px;              /* >= 16px: no zoom-on-focus on iOS */
+    --c-small: 12.5px;
+    --c-tab: 16px;
+    --c-channel-label: 16px;
+    --c-channel-copy: 15px;
+    --c-marquee: 36vw;
+    --c-field-gap: 2vw;
+  }
+  .contact-hero__grid { padding-top: calc(var(--grid-padding) + 18vw); }
+  .contact-hero__channels { flex-direction: column; gap: 6vw; }
+  .contact-form__row { grid-template-columns: 1fr; row-gap: var(--c-field-gap); }
+  .field__input { padding: 6vw 0 2.6vw; }
+  .field__label { top: 6vw; }
+  .field__input:focus ~ .field__label,
+  input.field__input:not(:placeholder-shown) ~ .field__label,
+textarea.field__input:not(:placeholder-shown) ~ .field__label,
+  .field.is-filled .field__label,
+  .field.is-open .field__label { transform: translateY(-4.8vw) scale(.8); }
+  .select__trigger { min-height: calc(16px * 1.4 + 8.6vw + 1px); }
+  .select__caret { width: 2.6vw; height: 2.6vw; }
+  .select__list { max-height: 70vw; }
+  .select__option { padding: 3vw 4vw; }
+  textarea.field__input { min-height: 24vw; }
+  .send-btn { padding: 3.6vw 7vw; }
+  .contact-thanks__icon { width: 14vw; height: 14vw; }
+  .contact-thanks__title { font-size: 11vw; margin-top: 5vw; }
+  .contact-thanks__text { max-width: none; }
+}
+
+/* Desktop: like the reference, the fixed actions stay out of the way of the form */
+@media (min-width: 1025px) {
+  body.contact-page .site-nav__actions { display: none; }
+}

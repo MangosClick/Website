@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180">
+  <defs>
+    <linearGradient id="lip" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e2495f"/>
+      <stop offset=".55" stop-color="#c62845"/>
+      <stop offset="1" stop-color="#9e1631"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="mouth">
+      <path d="M58 86c40-10 80-14 122-12 42-2 82 2 122 12-28 28-72 42-122 42S86 114 58 86z"/>
+    </clipPath>
+  </defs>
+  <!-- paper cut-out edge -->
+  <path fill="#fff" d="M8 84 30 52l40-20 52-8 30 6 28-4 30 4 28-6 52 8 40 20 26 34-14 28-34 26-52 22-58 8-58-8-52-22-34-26z"/>
+  <!-- lips -->
+  <path fill="url(#lip)" d="M28 84c34-34 72-50 110-42 18 4 30 10 42 10s24-6 42-10c38-8 76 8 110 42-30 46-88 72-152 72S58 130 28 84z"/>
+  <!-- open mouth -->
+  <path fill="#3a0a14" d="M58 86c40-10 80-14 122-12 42-2 82 2 122 12-28 28-72 42-122 42S86 114 58 86z"/>
+  <g clip-path="url(#mouth)">
+    <path fill="#fbfaf6" d="M50 80h260v34c-40 6-86 8-130 8s-90-2-130-8z"/>
+    <g stroke="#d9d4c8" stroke-width="2">
+      <path d="M180 76v40M156 77v38M204 77v38M132 79v34M228 79v34M110 82v28M250 82v28M90 85v22M270 85v22"/>
+    </g>
+    <path fill="#e8b4bd" d="M50 76h260v8c-40-4-86-6-130-6s-90 2-130 6z"/>
+  </g>
+  <!-- highlights -->
+  <path fill="url(#shine)" d="M120 120c20 10 40 14 60 14s40-4 60-14c-14 18-36 24-60 24s-46-6-60-24z"/>
+  <path fill="url(#shine)" opacity=".7" d="M96 58c18-8 36-8 52-2-16 0-34 4-52 12z"/>
+</svg>

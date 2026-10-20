@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Partners | Halden Automotive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-light">
+  <div class="cover" aria-hidden="true"></div>
+  <noscript><style>.cover { display: none; }</style></noscript>
+
+  <header class="site-header grid">
+    <a class="label span-3" href="index.html">Halden</a>
+    <p class="label col-4">Automotive studio<br>Since 1994</p>
+    <nav class="nav-list col-9" aria-label="Main">
+      <a class="label" href="services.html">Services</a>
+      <a class="label" href="partners.html" aria-current="page">Partners</a>
+      <a class="label" href="about.html">About</a>
+      <a class="label" href="contact.html">Contact</a>
+      <a class="label" href="careers.html">Careers</a>
+    </nav>
+  </header>
+
+  <div class="fixed-ctrl">
+    <a class="pill label" href="contact.html">Contact</a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </div>
+
+  <div class="menu" id="menu" aria-hidden="true" inert>
+    <ul class="menu__links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="partners.html">Partners</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="careers.html">Careers</a></li>
+    </ul>
+    <div class="menu__foot grid">
+      <p class="label span-3">@halden</p>
+      <p class="label col-9">(00) 0000 0000<br>hello@example.com</p>
+    </div>
+  </div>
+
+  <main>
+    <section class="page-hero">
+      <h1 class="page-hero__title">Working with<br>the makers</h1>
+      <p class="label">We hold approvals from manufacturers and paint suppliers, and we follow their rules to the letter.</p>
+      <span class="page-hero__arrow" aria-hidden="true">↓</span>
+    </section>
+    <section class="media ph-4" style="--bg: url('assets/img/cars/partners.jpg') center / cover no-repeat">
+      <div class="media__img"></div>
+    </section>
+    <section class="block grid block--plain">
+      <h2 class="h2">Partnerships</h2>
+    </section>
+    <section class="block grid">
+      <h3 class="h3 partner__name">Manufacturer programme</h3>
+      <div class="right">
+        <div class="panel ph-2"><span class="label">Partner logo</span></div>
+        <p class="text">Placeholder: one or two sentences on the manufacturer approval and why it is hard to get.</p>
+        <div class="rows">
+          <div class="row"><p class="label">Approval</p><p class="text">Placeholder: what the approval covers, such as repair methods, tooling and parts.</p></div>
+          <div class="row"><p class="label">Training</p><p class="text">Placeholder: how technicians qualify and how often they re-certify.</p></div>
+          <div class="row"><p class="label">Commitment</p><p class="text">Placeholder: what the partnership means for the customer.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="block grid">
+      <h3 class="h3 partner__name">Paint system partner</h3>
+      <div class="right">
+        <div class="panel ph-3"><span class="label">Partner logo</span></div>
+        <p class="text">Placeholder: one or two sentences on the paint supplier relationship.</p>
+        <div class="rows">
+          <div class="row"><p class="label">Approval</p><p class="text">Placeholder: what the approval covers, such as repair methods, tooling and parts.</p></div>
+          <div class="row"><p class="label">Training</p><p class="text">Placeholder: how technicians qualify and how often they re-certify.</p></div>
+          <div class="row"><p class="label">Commitment</p><p class="text">Placeholder: what the partnership means for the customer.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer grid">
+    <p class="label type span-3 f-brand">Halden</p>
+    <p class="label type col-4 f-meta">Automotive studio.<br>Placeholder City.<br>© 2026 Halden.</p>
+    <div class="col-9 f-nav">
+      <nav class="nav-list" aria-label="Footer">
+        <a class="label type" href="services.html">Services</a>
+        <a class="label type" href="partners.html" aria-current="page">Partners</a>
+        <a class="label type" href="about.html">About</a>
+        <a class="label type" href="contact.html">Contact</a>
+        <a class="label type" href="careers.html">Careers</a>
+      </nav>
+      <form class="signup" onsubmit="return false">
+        <label class="sr-only" for="email">Email</label>
+        <input class="label" id="email" type="email" placeholder="Enter your email">
+        <button class="label" type="submit">Sign up</button>
+      </form>
+    </div>
+    <div class="wordmark f-mark" aria-hidden="true">Halden</div>
+    <div class="col-9 f-contact">
+      <p class="label muted type">Contact</p>
+      <p class="label type">(00) 0000 0000<br>hello@example.com<br>8am – 5pm weekdays</p>
+      <p class="label muted type">Workshop</p>
+      <p class="label type">1 Example Street,<br>Suburb 0000</p>
+      <p class="label muted type">Studio</p>
+      <p class="label type">2 Sample Lane,<br>Suburb 0000</p>
+    </div>
+    <p class="label type span-3 f-handle">@halden</p>
+    <a class="label muted type col-4 f-privacy" href="#">Privacy</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" integrity="sha384-eD5ubmuCcvTdCADWuSchJYE7wcj2nzNr0itbrh6w/KJyBiltSZ8w3VFRBSWu5YQ8" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+</html>

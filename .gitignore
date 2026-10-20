@@ -1,0 +1,11 @@
+# secrets
+.env
+
+# dependencies
+node_modules/
+
+# local backups and Claude notes (not part of the site)
+backup/
+Memory/
+.claude/
+CLAUDE.md
