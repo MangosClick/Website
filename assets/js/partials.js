@@ -10,7 +10,7 @@
   const page = document.body.dataset.page || '';
   const cur = (name) => (page === name ? ' aria-current="page"' : '');
   // Placeholder contact details: replace before publishing
-  const MAIL = 'hello@mangos.click', PHONE = '+91 9061185683', TEL = 'tel:+919061185683';
+  const MAIL = 'awin@mangos.click', PHONE = '+91 9061185683', TEL = 'tel:+919061185683';
 
   const sprite = `
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>

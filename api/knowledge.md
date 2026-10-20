@@ -48,6 +48,6 @@ Edit this file to change what the chat assistant knows. Restart `node server.js`
 
 ## Contact
 - Contact page: a form for name, email, what you need and when you want to start. We call back within one working day.
-- Email: hello@mangos.click
+- Email: awin@mangos.click
 - Phone and WhatsApp (same number): +91 9061185683. WhatsApp is the quickest way to reach us; visitors can message any time.
 - Location: working remotely across India.
